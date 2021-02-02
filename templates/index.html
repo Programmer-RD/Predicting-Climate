@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    <style>
+        .footer {
+            position: fixed;
+            left:
+                0;
+            bottom: 0;
+            width: 100%;
+            background-color: gray;
+            color: white;
+            text-align: center;
+        }
+    </style>
+    <link rel="icon" href="https://media2.giphy.com/media/4ZgLPakqTajjVFOVqw/giphy.gif">
+    <title>Temperature Prediction</title>
+</head>
+
+<body>
+    <div class="container">
+        <br>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" role="alert">
+            <h3>{{ message }}</h3>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <br>
+    </div>
+    <br>
+    <center>
+    <img src="https://media2.giphy.com/media/4ZgLPakqTajjVFOVqw/giphy.gif" alt="https://media2.giphy.com/media/4ZgLPakqTajjVFOVqw/giphy.gif">
+</center>
+    <br>
+    <center class="container">
+        <h1><b>Predicting the Temperature <br> </b></h1>
+        <br>
+        <h4><b>*There is only around 210 countries to choose from.* *The predictions may change*</b></h4>
+
+    </center>
+    <br>
+    <div class="container">
+        <div class="jumbotron">
+            <form method="post">
+                <div class="mb-3">
+                    <label for="date" class="form-label">Date</label>
+                    <input type="date" required name="D" class="form-control" id="date">
+                </div>
+                <select name="C" required class="form-select">
+                    <option selected>Country</option>
+                    {% for info in infos %}
+                    <option value="{{info}}">{{info}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <button type="submit" class="btn btn-primary">Predict</button>
+            </form>
+        </div>
+    </div>
+    <br><br><br><br><br><br><br>
+    <div class="footer">
+        <h3><b>
+                Copyright © 2021 RanugaD
+            </b></h3>
+    </div>
+</body>
+
+</html>
